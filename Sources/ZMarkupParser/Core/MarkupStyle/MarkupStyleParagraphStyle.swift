@@ -33,7 +33,27 @@ public struct MarkupStyleParagraphStyle: MarkupStyleItem {
     public var allowsDefaultTighteningForTruncation:Bool? = nil
     public var lineBreakStrategy: NSParagraphStyle.LineBreakStrategy? = nil
     
-    public init(lineSpacing: CGFloat? = nil, paragraphSpacing: CGFloat? = nil, alignment: NSTextAlignment? = nil, headIndent: CGFloat? = nil, tailIndent: CGFloat? = nil, firstLineHeadIndent: CGFloat? = nil, minimumLineHeight: CGFloat? = nil, maximumLineHeight: CGFloat? = nil, lineBreakMode: NSLineBreakMode? = nil, baseWritingDirection: NSWritingDirection? = nil, lineHeightMultiple: CGFloat? = nil, paragraphSpacingBefore: CGFloat? = nil, hyphenationFactor: Float? = nil, usesDefaultHyphenation: Bool? = nil, tabStops: [NSTextTab]? = nil, defaultTabInterval: CGFloat? = nil, textLists: [NSTextList]? = nil, allowsDefaultTighteningForTruncation: Bool? = nil, lineBreakStrategy: NSParagraphStyle.LineBreakStrategy? = nil) {
+    public init(
+        lineSpacing: CGFloat? = nil,
+        paragraphSpacing: CGFloat? = nil,
+        alignment: NSTextAlignment? = nil,
+        headIndent: CGFloat? = nil,
+        tailIndent: CGFloat? = nil,
+        firstLineHeadIndent: CGFloat? = nil,
+        minimumLineHeight: CGFloat? = nil,
+        maximumLineHeight: CGFloat? = nil,
+        lineBreakMode: NSLineBreakMode? = nil,
+        baseWritingDirection: NSWritingDirection? = nil,
+        lineHeightMultiple: CGFloat? = nil,
+        paragraphSpacingBefore: CGFloat? = nil,
+        hyphenationFactor: Float? = nil,
+        usesDefaultHyphenation: Bool? = nil,
+        tabStops: [NSTextTab]? = nil,
+        defaultTabInterval: CGFloat? = nil,
+        textLists: [NSTextList]? = nil,
+        allowsDefaultTighteningForTruncation: Bool? = nil,
+        lineBreakStrategy: NSParagraphStyle.LineBreakStrategy? = nil
+    ) {
         self.lineSpacing = lineSpacing
         self.paragraphSpacing = paragraphSpacing
         self.alignment = alignment
@@ -123,25 +143,30 @@ public struct MarkupStyleParagraphStyle: MarkupStyleItem {
     }
     
     func isNil() -> Bool {
-        return !([lineSpacing,
-                 paragraphSpacing,
-                 alignment,
-                 headIndent,
-                 tailIndent,
-                 firstLineHeadIndent,
-                 minimumLineHeight,
-                 maximumLineHeight,
-                 lineBreakMode,
-                 baseWritingDirection,
-                 lineHeightMultiple,
-                 paragraphSpacingBefore,
-                 hyphenationFactor,
-                 usesDefaultHyphenation,
-                 tabStops,
-                 defaultTabInterval,
-                 textLists,
-                 allowsDefaultTighteningForTruncation,
-                 lineBreakStrategy] as [Any?]).contains(where: { $0 != nil})
+        return !(
+            [
+                lineSpacing,
+                paragraphSpacing,
+                alignment,
+                headIndent,
+                tailIndent,
+                firstLineHeadIndent,
+                minimumLineHeight,
+                maximumLineHeight,
+                lineBreakMode,
+                baseWritingDirection,
+                lineHeightMultiple,
+                paragraphSpacingBefore,
+                hyphenationFactor,
+                usesDefaultHyphenation,
+                tabStops,
+                defaultTabInterval,
+                textLists,
+                allowsDefaultTighteningForTruncation,
+                lineBreakStrategy
+            ] as [Any?]
+        )
+        .contains(where: { $0 != nil })
     }
 }
 

@@ -74,6 +74,7 @@ struct HTMLElementMarkupComponentMarkupStyleVisitor: MarkupVisitor {
     }
     
     func visit(_ markup: ParagraphMarkup) -> Result {
+        print("asdasd", defaultVisit(components.value(markup: markup)))
         return defaultVisit(components.value(markup: markup))
     }
     
@@ -192,7 +193,8 @@ struct HTMLElementMarkupComponentMarkupStyleVisitor: MarkupVisitor {
     func convertFontSizeToCGFloat(_ fontSize: String?) -> CGFloat? {
         guard let fontSize = fontSize else { return nil }
         // Remove 'px' and trim the string
-        let cleanedFontSize = fontSize.replacingOccurrences(of: "px", with: "").trimmingCharacters(in: .whitespacesAndNewlines)
+        let cleanedFontSize = fontSize.replacingOccurrences(of: "px", with: "")
+            .trimmingCharacters(in: .whitespacesAndNewlines)
 
         // Convert string to CGFloat
         if let doubleValue = Double(cleanedFontSize) {
@@ -205,13 +207,14 @@ struct HTMLElementMarkupComponentMarkupStyleVisitor: MarkupVisitor {
 
 extension HTMLElementMarkupComponentMarkupStyleVisitor {
     private func customStyle(_ htmlElement: HTMLElementMarkupComponent.HTMLElement?) -> MarkupStyle? {
-        guard let customStyle = htmlElement?.tag.customStyle else {
-            return nil
-        }
+        guard let customStyle = htmlElement?.tag.customStyle else { return nil }
         return customStyle
     }
     
-    func defaultVisit(_ htmlElement: HTMLElementMarkupComponent.HTMLElement?, defaultStyle: MarkupStyle? = nil) -> Result {
+    func defaultVisit(
+        _ htmlElement: HTMLElementMarkupComponent.HTMLElement?,
+        defaultStyle: MarkupStyle? = nil
+    ) -> Result {
         var markupStyle: MarkupStyle? = customStyle(htmlElement) ?? defaultStyle
         guard
             let styleString = htmlElement?.attributes?["style"],
@@ -220,7 +223,10 @@ extension HTMLElementMarkupComponentMarkupStyleVisitor {
             return markupStyle
         }
         
-        let styles = styleString.split(separator: ";").filter { $0.trimmingCharacters(in: .whitespacesAndNewlines) != "" }.map { $0.split(separator: ":") }
+        let styles = styleString.split(separator: ";")
+            .filter { $0.trimmingCharacters(in: .whitespacesAndNewlines) != "" }
+            .map { $0.split(separator: ":") }
+
         for style in styles {
             guard style.count == 2 else {
                 continue

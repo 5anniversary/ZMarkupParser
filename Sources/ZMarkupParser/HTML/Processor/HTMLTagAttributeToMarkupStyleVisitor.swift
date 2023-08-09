@@ -70,7 +70,22 @@ struct HTMLTagStyleAttributeToMarkupStyleVisitor: HTMLTagStyleAttributeVisitor {
     
     func visit(_ styleAttribute: LineHeightHTMLTagStyleAttribute) -> Result {
         guard let lineHeightFloat = Float(value) else { return nil }
-        return MarkupStyle(paragraphStyle: MarkupStyleParagraphStyle(minimumLineHeight: CGFloat(lineHeightFloat), maximumLineHeight: CGFloat(lineHeightFloat)))
+        return MarkupStyle(
+            paragraphStyle: MarkupStyleParagraphStyle(
+                minimumLineHeight: CGFloat(lineHeightFloat),
+                maximumLineHeight: CGFloat(lineHeightFloat)
+            )
+        )
+    }
+
+    func visit(_ styleAttribute: LineHeightHTMLTagStyleAttribute) -> Result {
+        guard let lineHeightFloat = Float(value) else { return nil }
+        return MarkupStyle(
+            paragraphStyle: MarkupStyleParagraphStyle(
+                minimumLineHeight: CGFloat(lineHeightFloat),
+                maximumLineHeight: CGFloat(lineHeightFloat)
+            )
+        )
     }
     
     func visit(_ styleAttribute: WordSpacingHTMLTagStyleAttribute) -> Result {
