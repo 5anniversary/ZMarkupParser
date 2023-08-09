@@ -74,7 +74,7 @@ struct HTMLElementMarkupComponentMarkupStyleVisitor: MarkupVisitor {
     }
     
     func visit(_ markup: ParagraphMarkup) -> Result {
-        print("asdasd", defaultVisit(components.value(markup: markup)))
+        print("asdasd", defaultVisit(components.value(markup: markup)), markup)
         return defaultVisit(components.value(markup: markup))
     }
     
