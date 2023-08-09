@@ -38,6 +38,7 @@ public protocol HTMLTagNameVisitor {
     func visit(_ tagName: CODE_HTMLTagName) -> Result
     func visit(_ tagName: EM_HTMLTagName) -> Result
     func visit(_ tagName: FONT_HTMLTagName) -> Result
+    func visit(_ tagName: CENTER_HTMLTagName) -> Result
     
     func visit(_ tagName: H1_HTMLTagName) -> Result
     func visit(_ tagName: H2_HTMLTagName) -> Result
@@ -85,6 +86,7 @@ public extension ZHTMLParserBuilder {
             PRE_HTMLTagName(),
             CODE_HTMLTagName(),
             EM_HTMLTagName(),
+            CENTER_HTMLTagName(),
             BLOCKQUOTE_HTMLTagName(),
             IMG_HTMLTagName(handler: nil)
         ]

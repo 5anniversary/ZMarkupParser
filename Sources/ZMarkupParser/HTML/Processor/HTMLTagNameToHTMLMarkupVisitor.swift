@@ -153,7 +153,11 @@ struct HTMLTagNameToMarkupVisitor: HTMLTagNameVisitor {
     func visit(_ tagName: BLOCKQUOTE_HTMLTagName) -> Result {
         return BlockQuoteMarkup()
     }
-    
+
+    func visit(_ tagName: CENTER_HTMLTagName) -> Result {
+        return ParagraphMarkup()
+    }
+
     func visit(_ tagName: CODE_HTMLTagName) -> Result {
         return CodeMarkup()
     }

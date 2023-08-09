@@ -184,5 +184,8 @@ private class StubVisitor: HTMLTagNameVisitor {
         count += 1
         return count
     }
-    
+
+    func visit(_ tagName: ZMarkupParser.CENTER_HTMLTagName) -> Int {
+        return count
+    }
 }
