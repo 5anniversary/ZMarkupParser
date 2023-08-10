@@ -232,8 +232,6 @@ extension MarkupNSAttributedStringVisitor {
         } else {
             attributedString = NSAttributedString(string: string)
         }
-        print("asdasd", markup)
-        dump(markup)
         return applyMarkupStyle(attributedString, with: collectMarkupStyle(markup))
     }
 }

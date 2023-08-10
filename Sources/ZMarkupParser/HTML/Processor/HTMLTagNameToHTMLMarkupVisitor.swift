@@ -155,7 +155,7 @@ struct HTMLTagNameToMarkupVisitor: HTMLTagNameVisitor {
     }
 
     func visit(_ tagName: CENTER_HTMLTagName) -> Result {
-        return ParagraphMarkup()
+        return RawStringMarkup()
     }
 
     func visit(_ tagName: CODE_HTMLTagName) -> Result {
