@@ -82,6 +82,14 @@ struct HTMLTagStyleAttributeToMarkupStyleVisitor: HTMLTagStyleAttributeVisitor {
         guard let lineSpacing = self.convert(fromPX: value) else { return nil }
         return MarkupStyle(paragraphStyle: MarkupStyleParagraphStyle(lineSpacing: CGFloat(lineSpacing)))
     }
+
+    func visit(_ styleAttribute: TextAlignHTMLTagStyleAttribute) -> MarkupStyle? {
+        return MarkupStyle(
+            paragraphStyle: MarkupStyleParagraphStyle(
+                alignment: convertAlign(align: styleAttribute.styleName)
+            )
+        )
+    }
     
     func convert(fromPX string: String) -> CGFloat? {
         guard
@@ -94,5 +102,22 @@ struct HTMLTagStyleAttributeToMarkupStyleVisitor: HTMLTagStyleAttributeVisitor {
             return nil
         }
         return CGFloat(size)
+    }
+
+    private func convertAlign(align: String) -> NSTextAlignment? {
+        switch align {
+        case "center":
+            return .center
+        case "justified":
+            return .justified
+        case "natural":
+            return .natural
+        case "right":
+            return .right
+        case "left":
+            return .left
+        default:
+            return nil
+        }
     }
 }
