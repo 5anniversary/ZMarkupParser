@@ -86,7 +86,7 @@ struct HTMLTagStyleAttributeToMarkupStyleVisitor: HTMLTagStyleAttributeVisitor {
     func visit(_ styleAttribute: TextAlignHTMLTagStyleAttribute) -> MarkupStyle? {
         return MarkupStyle(
             paragraphStyle: MarkupStyleParagraphStyle(
-                alignment: convertAlign(align: styleAttribute.styleName)
+                alignment: convertAlign(align: value)
             )
         )
     }
