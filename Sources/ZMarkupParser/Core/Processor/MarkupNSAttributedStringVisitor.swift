@@ -247,7 +247,6 @@ private extension MarkupNSAttributedStringVisitor {
         return markup.childMarkups
             .compactMap { visit(markup: $0) }
             .reduce(NSMutableAttributedString()) { partialResult, attributedString in
-                print("Asdasd", partialResult, attributedString)
                 partialResult.append(attributedString)
                 return partialResult
             }
