@@ -31,6 +31,7 @@ final class HTMLParsedResultToHTMLElementWithRootMarkupProcessor: ParserProcesso
         for thisItem in from {
             switch thisItem {
             case .start(let item):
+                print("asdasd", item)
                 let visitor = HTMLTagNameToMarkupVisitor(attributes: item.attributes, isSelfClosingTag: false)
                 let htmlTag = self.htmlTags[item.tagName] ?? HTMLTag(tagName: ExtendTagName(item.tagName))
                 let markup = visitor.visit(tagName: htmlTag.tagName)
