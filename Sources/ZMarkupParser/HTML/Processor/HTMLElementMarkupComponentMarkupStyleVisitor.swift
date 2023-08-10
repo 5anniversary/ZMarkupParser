@@ -215,7 +215,6 @@ extension HTMLElementMarkupComponentMarkupStyleVisitor {
         defaultStyle: MarkupStyle? = nil
     ) -> Result {
         var markupStyle: MarkupStyle? = customStyle(htmlElement) ?? defaultStyle
-        print("asdasd", markupStyle, customStyle(htmlElement), defaultStyle)
         guard
             let styleString = htmlElement?.attributes?["style"],
             styleAttributes.count > 0
