@@ -155,7 +155,7 @@ struct HTMLTagNameToMarkupVisitor: HTMLTagNameVisitor {
     }
 
     func visit(_ tagName: CENTER_HTMLTagName) -> Result {
-        return RawStringMarkup()
+        return RawStringMarkup(attributedString: NSAttributedString())
     }
 
     func visit(_ tagName: CODE_HTMLTagName) -> Result {
