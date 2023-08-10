@@ -232,7 +232,7 @@ extension MarkupNSAttributedStringVisitor {
         } else {
             attributedString = NSAttributedString(string: string)
         }
-        print("asdasd", string, attrs)
+        print("asdasd", string, attrs, markup)
         return applyMarkupStyle(attributedString, with: collectMarkupStyle(markup))
     }
 }
@@ -244,11 +244,11 @@ private extension MarkupNSAttributedStringVisitor {
         //      \
         //       > String("Test")
         // Result: Bold Test
-        
-        return markup.childMarkups.compactMap({ visit(markup: $0) }).reduce(NSMutableAttributedString()) { partialResult, attributedString in
-            partialResult.append(attributedString)
-            return partialResult
-        }
+        return markup.childMarkups.compactMap { visit(markup: $0) }
+            .reduce(NSMutableAttributedString()) { partialResult, attributedString in
+                partialResult.append(attributedString)
+                return partialResult
+            }
     }
     
     func collectMarkupStyle(_ markup: Markup) -> MarkupStyle? {
