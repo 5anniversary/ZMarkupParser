@@ -38,11 +38,11 @@ struct HTMLTagNameToMarkupVisitor: HTMLTagNameVisitor {
     }
     
     func visit(_ tagName: DIV_HTMLTagName) -> Result {
-        if isSelfClosingTag {
-            return BreakLineMarkup()
-        } else {
+//        if isSelfClosingTag {
+//            return BreakLineMarkup()
+//        } else {
             return ParagraphMarkup()
-        }
+//        }
     }
     
     func visit(_ tagName: HR_HTMLTagName) -> Result {
